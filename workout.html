@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NextRep | Smart Habit & Fitness Tracker</title>  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="workout">
+
+  <header class="navbar glass-nav">
+    <div class="nav-left">
+      <h1 class="brand">NextRep</h1>
+    </div>
+
+    <nav class="nav-links">
+      <a href="fitness.html" class="nav-btn">Fitness Home</a>
+      <a href="workout.html" class="nav-btn active">Workout</a>
+      <a href="calories.html" class="nav-btn">Calories</a>
+      <a href="nutrition.html" class="nav-btn">Nutrition</a>
+      <a href="recovery.html" class="nav-btn">Recovery</a>
+      <a href="dashboard.html" class="nav-btn">Return to Habit Tracker</a>
+      <button id="themeToggle" class="theme-btn" type="button">🌙 Theme</button>
+      <button class="logout-btn" type="button" onclick="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+
+    <section class="fitness-hero glass">
+      <div class="fitness-hero-grid">
+        <div class="hero-main">
+          <span class="fitness-chip">Elite Training Zone</span>
+          <h2>Build a stronger body with a premium gym plan</h2>
+          <p class="muted">
+            Generate a workout split based on your goal, experience, age, height, weight,
+            training setup, split style, and weekly frequency.
+          </p>
+
+          <div class="hero-feature-row">
+            <div class="hero-feature-card">
+              <strong>Strength</strong>
+              <span>Progressive overload focused</span>
+            </div>
+            <div class="hero-feature-card">
+              <strong>Recovery</strong>
+              <span>Balanced weekly structure</span>
+            </div>
+            <div class="hero-feature-card">
+              <strong>Results</strong>
+              <span>Built for consistency</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="focus-panel">
+          <div class="focus-top">
+            <h3>Training Focus</h3>
+            <span class="focus-badge">Gym Mode</span>
+          </div>
+
+          <div class="focus-meter-labels">
+            <span>Intensity</span>
+            <span>High</span>
+          </div>
+
+          <div class="focus-meter">
+            <div class="focus-meter-fill"></div>
+          </div>
+
+          <div class="focus-tags">
+            <div class="focus-tag">Chest</div>
+            <div class="focus-tag">Back</div>
+            <div class="focus-tag">Legs</div>
+            <div class="focus-tag">Shoulders</div>
+            <div class="focus-tag">Arms</div>
+            <div class="focus-tag">Core</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="workout-top-grid">
+      <div class="workout-body-card glass">
+        <h3>Body Focus</h3>
+        <p>Your training split emphasizes these muscle groups.</p>
+
+        <div class="body-visual-wrap">
+          <div class="body-visual">
+            <div class="body-head"></div>
+            <div class="body-core"></div>
+            <div class="body-legs"></div>
+
+            <span class="body-dot secondary" style="top: 16px; left: 50%; transform: translateX(-50%);"></span>
+            <span class="body-dot chest"></span>
+            <span class="body-dot left-shoulder"></span>
+            <span class="body-dot right-shoulder"></span>
+            <span class="body-dot left-arm"></span>
+            <span class="body-dot right-arm"></span>
+            <span class="body-dot core"></span>
+            <span class="body-dot left-leg"></span>
+            <span class="body-dot right-leg"></span>
+          </div>
+
+          <div class="body-legend">
+            <div class="legend-row">
+              <span class="legend-dot primary"></span>
+              <span>Primary focus</span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-dot secondary"></span>
+              <span>Secondary support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="workout-calendar-card glass">
+        <h3>Weekly Training Calendar</h3>
+        <p>A preview of how your week is structured.</p>
+
+        <div class="calendar-row">
+          <div class="calendar-day">
+            <strong>Mon</strong>
+            <span>Push</span>
+          </div>
+          <div class="calendar-day">
+            <strong>Tue</strong>
+            <span>Pull</span>
+          </div>
+          <div class="calendar-day">
+            <strong>Wed</strong>
+            <span>Legs</span>
+          </div>
+          <div class="calendar-day">
+            <strong>Thu</strong>
+            <span>Recovery</span>
+          </div>
+          <div class="calendar-day">
+            <strong>Fri</strong>
+            <span>Upper</span>
+          </div>
+          <div class="calendar-day">
+            <strong>Sat</strong>
+            <span>Lower</span>
+          </div>
+          <div class="calendar-day rest">
+            <strong>Sun</strong>
+            <span>Rest</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="workout-layout">
+      <div class="workout-form-card glass">
+        <div class="section-title-wrap">
+          <h2>Build Your Plan</h2>
+          <p class="muted">Enter your fitness details and generate your training split.</p>
+        </div>
+
+        <form id="workoutForm" class="create-form">
+          <div class="workout-form-grid">
+
+            <div class="form-group">
+              <label for="fitnessGoal">Fitness Goal</label>
+              <select id="fitnessGoal" class="form-input" required>
+                <option value="" disabled selected>Select goal</option>
+                <option value="muscle_gain">Muscle Gain</option>
+                <option value="fat_loss">Fat Loss</option>
+                <option value="body_recomp">Body Recomposition</option>
+                <option value="strength">Strength</option>
+                <option value="endurance">Endurance</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="fitnessLevel">Experience Level</label>
+              <select id="fitnessLevel" class="form-input" required>
+                <option value="" disabled selected>Select level</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="fitnessAge">Age</label>
+              <input type="number" id="fitnessAge" class="form-input" placeholder="21" min="12" max="80" required />
+            </div>
+
+            <div class="form-group">
+              <label for="fitnessHeight">Height (cm)</label>
+              <input type="number" id="fitnessHeight" class="form-input" placeholder="173" min="100" max="250" required />
+            </div>
+
+            <div class="form-group">
+              <label for="fitnessWeight">Weight (kg)</label>
+              <input type="number" id="fitnessWeight" class="form-input" placeholder="79" min="25" max="250" required />
+            </div>
+
+            <div class="form-group">
+              <label for="workoutPlace">Training Setup</label>
+              <select id="workoutPlace" class="form-input" required>
+                <option value="" disabled selected>Select setup</option>
+                <option value="gym">Gym</option>
+                <option value="home">Home</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="trainingSplit">Training Split</label>
+              <select id="trainingSplit" class="form-input">
+                <option value="" disabled selected>Select split</option>
+                <option value="push_pull_legs">Push Pull Legs</option>
+                <option value="upper_lower">Upper Lower</option>
+                <option value="bro_split">Bro Split</option>
+                <option value="full_body">Full Body</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="fitnessDifficulty">Workout Difficulty</label>
+              <select id="fitnessDifficulty" class="form-input">
+                <option value="" disabled selected>Select difficulty</option>
+                <option value="easy">Easy</option>
+                <option value="moderate">Moderate</option>
+                <option value="hard">Hard</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="workoutDays">Workout Days Per Week</label>
+              <select id="workoutDays" class="form-input" required>
+                <option value="" disabled selected>Select days</option>
+                <option value="3">3 Days</option>
+                <option value="4">4 Days</option>
+                <option value="5">5 Days</option>
+                <option value="6">6 Days</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="injuryArea">Injury / Limitation</label>
+              <select id="injuryArea" class="form-input">
+                <option value="none" selected>None</option>
+                <option value="shoulder">Shoulder</option>
+                <option value="knee">Knee</option>
+                <option value="lower_back">Lower Back</option>
+                <option value="wrist">Wrist</option>
+                <option value="ankle">Ankle</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="primary-btn">Generate Workout</button>
+          <p id="workoutMessage" class="auth-message"></p>
+        </form>
+      </div>
+
+      <div class="workout-result-card glass">
+        <div class="section-title-wrap">
+          <h2>Your Training Split</h2>
+          <p class="muted">Your generated gym plan appears here.</p>
+        </div>
+
+        <div class="result-action-row">
+          <button type="button" class="secondary-action-btn" onclick="saveGeneratedWorkout()">Save Plan</button>
+          <button type="button" class="secondary-action-btn" onclick="window.print()">Print Plan</button>
+        </div>
+
+        <div id="workoutPlanOutput" class="workout-output-empty">
+          <h3>No workout generated yet</h3>
+          <p>Fill in your details and generate your premium gym plan.</p>
+        </div>
+
+        <div class="saved-plans-box">
+          <h4>Saved Plans</h4>
+          <p>Quick access to your stored workout plans.</p>
+          <div id="savedWorkoutPlans"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+<p>© 2026 NextRep. All rights reserved.</p>
+</html>

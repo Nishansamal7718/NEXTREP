@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NextRep | Smart Habit & Fitness Tracker</title>  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="recovery">
+
+  <header class="navbar glass-nav">
+    <div class="nav-left">
+      <h1 class="brand">NextRep</h1>
+    </div>
+
+    <nav class="nav-links">
+      <a href="fitness.html" class="nav-btn">Fitness Home</a>
+      <a href="workout.html" class="nav-btn">Workout</a>
+      <a href="calories.html" class="nav-btn">Calories</a>
+      <a href="nutrition.html" class="nav-btn">Nutrition</a>
+      <a href="recovery.html" class="nav-btn active">Recovery</a>
+      <a href="dashboard.html" class="nav-btn">Return to Habit Tracker</a>
+      <button id="themeToggle" class="theme-btn" type="button">🌙 Theme</button>
+      <button class="logout-btn" type="button" onclick="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+
+    <section class="fitness-hero glass">
+      <div class="fitness-hero-grid">
+        <div class="hero-main">
+          <span class="fitness-chip">Recovery & Injury Support</span>
+          <h2>Train smarter with structured recovery guidance</h2>
+          <p class="muted">
+            Assess pain, choose the affected area, identify red flags, and generate a practical
+            recovery plan with safer training alternatives.
+          </p>
+
+          <div class="hero-feature-row">
+            <div class="hero-feature-card">
+              <strong>Injury Check</strong>
+              <span>Review pain level, type, and training readiness</span>
+            </div>
+            <div class="hero-feature-card">
+              <strong>Recovery Plan</strong>
+              <span>Get what-to-do, what-to-avoid, and timeline guidance</span>
+            </div>
+            <div class="hero-feature-card">
+              <strong>Safe Alternatives</strong>
+              <span>Swap risky movements for safer exercises</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="focus-panel">
+          <div class="focus-top">
+            <h3>Recovery Focus</h3>
+            <span class="focus-badge">Support Mode</span>
+          </div>
+
+          <div class="focus-meter-labels">
+            <span>Readiness</span>
+            <span id="recoveryReadinessText">Assessment Needed</span>
+          </div>
+
+          <div class="focus-meter">
+            <div class="focus-meter-fill" id="recoveryReadinessBar" style="width: 30%;"></div>
+          </div>
+
+          <div class="focus-tags">
+            <div class="focus-tag">Pain Check</div>
+            <div class="focus-tag">Red Flags</div>
+            <div class="focus-tag">Recovery Plan</div>
+            <div class="focus-tag">Mobility</div>
+            <div class="focus-tag">Sleep</div>
+            <div class="focus-tag">Return Plan</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="recovery-top-grid">
+      <div class="workout-form-card glass">
+        <div class="section-title-wrap">
+          <h2>Injury Assessment</h2>
+          <p class="muted">Choose your injury profile to generate a more useful recovery plan.</p>
+        </div>
+
+        <div class="recovery-assessment-grid">
+          <div class="form-group">
+            <label for="recoveryArea">Affected Area</label>
+            <select id="recoveryArea" class="form-input">
+              <option value="shoulder">Shoulder</option>
+              <option value="knee">Knee</option>
+              <option value="lower_back">Lower Back</option>
+              <option value="wrist">Wrist</option>
+              <option value="ankle">Ankle</option>
+              <option value="general">General Soreness</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="recoveryPainLevel">Pain Level</label>
+            <select id="recoveryPainLevel" class="form-input">
+              <option value="1">1 - Very Mild</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4 - Mild</option>
+              <option value="5">5 - Moderate</option>
+              <option value="6">6</option>
+              <option value="7">7 - High</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10 - Severe</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="recoveryType">Issue Type</label>
+            <select id="recoveryType" class="form-input">
+              <option value="soreness">Soreness</option>
+              <option value="strain">Muscle Strain</option>
+              <option value="joint_pain">Joint Pain</option>
+              <option value="stiffness">Stiffness</option>
+              <option value="mobility_limit">Mobility Limitation</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="recoveryPhase">Recovery Phase</label>
+            <select id="recoveryPhase" class="form-input">
+              <option value="acute">Acute / Fresh</option>
+              <option value="improving">Improving</option>
+              <option value="return_training">Returning to Training</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="sleepHours">Sleep Hours</label>
+            <select id="sleepHours" class="form-input">
+              <option value="lt6">Less than 6 hours</option>
+              <option value="6to7">6-7 hours</option>
+              <option value="7to9">7-9 hours</option>
+              <option value="gt9">More than 9 hours</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="activityReadiness">Training Readiness</label>
+            <select id="activityReadiness" class="form-input">
+              <option value="full_rest">Need Full Rest</option>
+              <option value="light_only">Light Activity Only</option>
+              <option value="modified_training">Modified Training</option>
+              <option value="almost_normal">Almost Normal</option>
+            </select>
+          </div>
+
+          <div class="recovery-redflags-box">
+            <h4>Red Flag Check</h4>
+
+            <div class="recovery-redflags-grid">
+              <label class="recovery-check">
+                <input type="checkbox" id="flagSharpPain" />
+                <span>Sharp pain during movement</span>
+              </label>
+
+              <label class="recovery-check">
+                <input type="checkbox" id="flagSwelling" />
+                <span>Visible swelling</span>
+              </label>
+
+              <label class="recovery-check">
+                <input type="checkbox" id="flagNumbness" />
+                <span>Numbness or tingling</span>
+              </label>
+
+              <label class="recovery-check">
+                <input type="checkbox" id="flagInstability" />
+                <span>Joint instability / giving way</span>
+              </label>
+
+              <label class="recovery-check">
+                <input type="checkbox" id="flagLongPain" />
+                <span>Pain lasting more than 1-2 weeks</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="planner-btn">
+            <button type="button" class="primary-btn" id="generateRecoveryPlanBtn">Generate Recovery Plan</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="workout-calendar-card glass">
+        <h3>Recovery Score</h3>
+        <p>Simple readiness score based on pain, sleep, and training status.</p>
+
+        <div class="macro-summary-grid">
+          <div class="macro-stat-card">
+            <span>Recovery Score</span>
+            <strong id="recoveryScoreText">—</strong>
+          </div>
+          <div class="macro-stat-card">
+            <span>Readiness</span>
+            <strong id="recoveryStatusText">—</strong>
+          </div>
+          <div class="macro-stat-card">
+            <span>Sleep Support</span>
+            <strong id="sleepSupportText">—</strong>
+          </div>
+          <div class="macro-stat-card">
+            <span>Training Status</span>
+            <strong id="trainingStatusText">—</strong>
+          </div>
+        </div>
+
+        <div id="recoveryAlertBox" class="recovery-alert-box">
+          No major alerts selected.
+        </div>
+      </div>
+    </section>
+
+    <section class="workout-result-card glass">
+      <div class="section-title-wrap">
+        <h2>Professional Recovery Plan</h2>
+        <p class="muted">Actionable recovery guidance based on your assessment.</p>
+      </div>
+
+      <div class="recovery-plan-grid">
+        <div class="recovery-plan-card">
+          <h4>What To Do Today</h4>
+          <p id="recoveryDoToday">Generate your recovery plan to view this section.</p>
+        </div>
+
+        <div class="recovery-plan-card">
+          <h4>What To Avoid</h4>
+          <p id="recoveryAvoidToday">Generate your recovery plan to view this section.</p>
+        </div>
+
+        <div class="recovery-plan-card">
+          <h4>Mobility / Recovery Work</h4>
+          <p id="recoveryMobilityToday">Generate your recovery plan to view this section.</p>
+        </div>
+
+        <div class="recovery-plan-card">
+          <h4>Return To Training Advice</h4>
+          <p id="recoveryReturnTraining">Generate your recovery plan to view this section.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="workout-result-card glass">
+      <div class="section-title-wrap">
+        <h2>Safe Exercise Alternatives</h2>
+        <p class="muted">Swap risky exercises for safer options while recovering.</p>
+      </div>
+
+      <div class="recovery-plan-grid">
+        <div class="recovery-plan-card">
+          <h4>Exercises To Reduce</h4>
+          <p id="recoveryReduceExercises">Generate your recovery plan to view this section.</p>
+        </div>
+
+        <div class="recovery-plan-card">
+          <h4>Safer Alternatives</h4>
+          <p id="recoveryAlternativeExercises">Generate your recovery plan to view this section.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="workout-result-card glass">
+      <div class="section-title-wrap">
+        <h2>Daily Recovery Checklist</h2>
+        <p class="muted">Use this as your minimum recovery standard for the day.</p>
+      </div>
+
+      <div class="recovery-checklist-grid" id="recoveryChecklistGrid">
+        <div class="checklist-card">Hydration target</div>
+        <div class="checklist-card">Protein intake</div>
+        <div class="checklist-card">Sleep routine</div>
+        <div class="checklist-card">Mobility work</div>
+        <div class="checklist-card">Pain re-check</div>
+        <div class="checklist-card">Light walking / movement</div>
+      </div>
+    </section>
+
+    <section class="workout-result-card glass">
+      <div class="section-title-wrap">
+        <h2>Professional Note</h2>
+      </div>
+
+      <div class="nutrition-note-box">
+        This recovery mode is for general support and training modification only. If your pain is sharp,
+        worsening, associated with swelling, instability, numbness, or persists for more than 1–2 weeks,
+        reduce training and seek evaluation from a qualified medical professional.
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+<p>© 2026 NextRep. All rights reserved.</p>
+</html>

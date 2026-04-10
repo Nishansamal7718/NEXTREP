@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NextRep | Smart Habit & Fitness Tracker</title>  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="calories">
+
+  <header class="navbar glass-nav">
+    <div class="nav-left">
+      <h1 class="brand">NextRep</h1>
+    </div>
+
+    <nav class="nav-links">
+      <a href="fitness.html" class="nav-btn">Fitness Home</a>
+      <a href="workout.html" class="nav-btn">Workout</a>
+      <a href="calories.html" class="nav-btn active">Calories</a>
+      <a href="nutrition.html" class="nav-btn">Nutrition</a>
+      <a href="recovery.html" class="nav-btn">Recovery</a>
+      <a href="dashboard.html" class="nav-btn">Return to Habit Tracker</a>
+      <button id="themeToggle" class="theme-btn" type="button">🌙 Theme</button>
+      <button class="logout-btn" type="button" onclick="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+
+    <section class="fitness-hero glass">
+      <div class="fitness-hero-grid">
+
+        <div class="hero-main">
+          <span class="fitness-chip">Nutrition Control</span>
+          <h2>Track calories and macros with precision</h2>
+          <p class="muted">
+            Add meals, track calories, and monitor protein, carbs, and fats for the day.
+          </p>
+
+          <div class="hero-feature-row">
+            <div class="hero-feature-card">
+              <strong>Calories</strong>
+              <span>Monitor daily intake</span>
+            </div>
+            <div class="hero-feature-card">
+              <strong>Macros</strong>
+              <span>Track protein, carbs, fats</span>
+            </div>
+            <div class="hero-feature-card">
+              <strong>Consistency</strong>
+              <span>Stay within target range</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="focus-panel">
+          <div class="focus-top">
+            <h3>Daily Goal</h3>
+            <span class="focus-badge">Nutrition</span>
+          </div>
+
+          <div class="focus-meter-labels">
+            <span>Target Progress</span>
+            <span id="calorieGoalPercentText">0%</span>
+          </div>
+
+          <div class="focus-meter">
+            <div class="focus-meter-fill" id="calorieGoalBar" style="width: 0%;"></div>
+          </div>
+
+          <div class="focus-tags">
+            <div class="focus-tag"><span id="calorieTotalTag">0 kcal</span></div>
+            <div class="focus-tag"><span id="proteinTotalTag">0g protein</span></div>
+            <div class="focus-tag"><span id="carbTotalTag">0g carbs</span></div>
+            <div class="focus-tag"><span id="fatTotalTag">0g fats</span></div>
+            <div class="focus-tag"><span id="mealCountTag">0 meals</span></div>
+            <div class="focus-tag"><span id="remainingCaloriesTag">0 left</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="calorie-top-grid">
+
+      <div class="workout-body-card glass">
+        <h3>Today’s Summary</h3>
+        <p>Your daily calorie balance and macro distribution.</p>
+
+        <div class="macro-summary-grid">
+          <div class="macro-stat-card">
+            <span>Calories</span>
+            <strong id="calorieTotal">0</strong>
+          </div>
+          <div class="macro-stat-card">
+            <span>Protein</span>
+            <strong id="proteinTotal">0g</strong>
+          </div>
+          <div class="macro-stat-card">
+            <span>Carbs</span>
+            <strong id="carbTotal">0g</strong>
+          </div>
+          <div class="macro-stat-card">
+            <span>Fats</span>
+            <strong id="fatTotal">0g</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="workout-calendar-card glass">
+        <h3>Tracking Date</h3>
+        <p>Choose a date to review or add your meals.</p>
+
+        <div class="calorie-date-box">
+          <input type="date" id="calorieDate" class="date-input" />
+          <div class="macro-stat-card">
+            <span>Target Calories</span>
+            <strong id="calorieTargetDisplay">2000 kcal</strong>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <section class="workout-body-card glass">
+  <h3>Weekly Calorie Trend</h3>
+  <p>Track your calorie intake over the last 7 days.</p>
+
+  <div class="chart-grid" id="calorieChartGrid"></div>
+</section>
+    <section class="workout-form-card glass">
+  <div class="section-title-wrap">
+    <h2>Calorie Goal Calculator</h2>
+    <p class="muted">Get your daily calorie target based on your body and goal.</p>
+  </div>
+
+  <div class="calorie-calc-grid">
+
+    <div class="form-group">
+      <label>Age</label>
+      <input type="number" id="calcAge" class="form-input" placeholder="e.g. 21">
+    </div>
+
+    <div class="form-group">
+      <label>Weight (kg)</label>
+      <input type="number" id="calcWeight" class="form-input" placeholder="e.g. 70">
+    </div>
+
+    <div class="form-group">
+      <label>Height (cm)</label>
+      <input type="number" id="calcHeight" class="form-input" placeholder="e.g. 173">
+    </div>
+
+    <div class="form-group">
+      <label>Gender</label>
+      <select id="calcGender" class="form-input">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Goal</label>
+      <select id="calcGoal" class="form-input">
+        <option value="fat_loss">Fat Loss</option>
+        <option value="maintain">Maintain</option>
+        <option value="muscle_gain">Muscle Gain</option>
+      </select>
+    </div>
+
+    <div class="form-group calc-btn">
+      <label>&nbsp;</label>
+      <button type="button" class="primary-btn" onclick="calculateCalories()">Calculate</button>
+    </div>
+
+  </div>
+
+  <div class="calorie-calc-result">
+    <div class="macro-stat-card">
+      <span>Maintenance</span>
+      <strong id="maintainCalories">—</strong>
+    </div>
+
+    <div class="macro-stat-card">
+      <span>Target Calories</span>
+      <strong id="targetCalories">—</strong>
+    </div>
+  </div>
+</section>
+<section class="workout-result-card glass">
+  <div class="section-title-wrap">
+    <h2>Weekly Calorie Graph</h2>
+    <p class="muted">Track your calorie intake over the last 7 days.</p>
+  </div>
+
+  <div class="calorie-chart-card">
+    <div class="calorie-chart" id="calorieChart"></div>
+  </div>
+</section>
+<section class="workout-form-card glass">
+  <div class="section-title-wrap">
+    <h2>Quick Food Lookup</h2>
+    <p class="muted">Pick a common food and quantity to auto-fill nutrition values.</p>
+  </div>
+
+  <div class="quick-food-grid">
+    <div class="form-group">
+      <label for="quickFoodSelect">Food Item</label>
+      <select id="quickFoodSelect" class="form-input">
+        <option value="" selected disabled>Select food</option>
+
+        <optgroup label="Fruits">
+          <option value="banana">Banana (1 medium)</option>
+          <option value="apple">Apple (1 medium)</option>
+          <option value="coconut_water">Coconut Water (1 glass)</option>
+        </optgroup>
+
+        <optgroup label="Breakfast / Indian Breakfast">
+          <option value="oats">Oats (100g)</option>
+          <option value="poha">Poha (1 plate)</option>
+          <option value="upma">Upma (1 bowl)</option>
+          <option value="idli">Idli (2 pieces)</option>
+          <option value="dosa">Dosa (1 plain)</option>
+          <option value="masala_dosa">Masala Dosa (1 piece)</option>
+          <option value="uttapam">Uttapam (1 medium)</option>
+          <option value="paratha">Paratha (1 piece)</option>
+          <option value="aloo_paratha">Aloo Paratha (1 piece)</option>
+          <option value="bread">Bread (2 slices)</option>
+          <option value="milk">Milk (250ml)</option>
+          <option value="egg">Egg (1 whole)</option>
+          <option value="chai">Chai (1 cup)</option>
+        </optgroup>
+
+        <optgroup label="Lunch / Dinner">
+          <option value="rice">Cooked Rice (100g)</option>
+          <option value="roti">Roti (1 piece)</option>
+          <option value="dal">Dal (1 cup)</option>
+          <option value="dal_rice">Dal Rice (1 plate)</option>
+          <option value="rajma_chawal">Rajma Chawal (1 plate)</option>
+          <option value="chole_bhature">Chole Bhature (1 plate)</option>
+          <option value="khichdi">Khichdi (1 bowl)</option>
+          <option value="pulao">Veg Pulao (1 plate)</option>
+          <option value="biryani_veg">Veg Biryani (1 plate)</option>
+          <option value="biryani_chicken">Chicken Biryani (1 plate)</option>
+          <option value="roti_sabzi">Roti Sabzi (2 roti + sabzi)</option>
+          <option value="paneer_butter_masala">Paneer Butter Masala (1 serving)</option>
+          <option value="chicken_curry">Chicken Curry (1 serving)</option>
+          <option value="fish_curry">Fish Curry (1 serving)</option>
+          <option value="paneer">Paneer (100g)</option>
+          <option value="chicken">Chicken Breast (100g)</option>
+          <option value="tofu">Tofu (100g)</option>
+          <option value="soy_chunks">Soy Chunks (50g dry)</option>
+        </optgroup>
+
+        <optgroup label="Snacks / Street Food">
+          <option value="samosa">Samosa (1 piece)</option>
+          <option value="maggi">Maggi (1 packet prepared)</option>
+          <option value="pav_bhaji">Pav Bhaji (1 plate)</option>
+          <option value="bhel_puri">Bhel Puri (1 plate)</option>
+          <option value="dahi_puri">Dahi Puri (1 plate)</option>
+          <option value="peanut_butter">Peanut Butter (1 tbsp)</option>
+          <option value="almonds">Almonds (10 pieces)</option>
+          <option value="sprouts">Sprouts Salad (1 bowl)</option>
+          <option value="curd">Curd (100g)</option>
+          <option value="lassi">Sweet Lassi (1 glass)</option>
+          <option value="buttermilk">Buttermilk (1 glass)</option>
+        </optgroup>
+
+        <optgroup label="Basics">
+          <option value="potato">Boiled Potato (100g)</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Quantity</label>
+      <div class="qty-control">
+        <button type="button" onclick="changeQty(-1)">-</button>
+        <input type="number" id="quickFoodQty" class="form-input" value="1" min="1" />
+        <button type="button" onclick="changeQty(1)">+</button>
+      </div>
+    </div>
+
+    <div class="form-group quick-food-action">
+      <label>&nbsp;</label>
+      <button type="button" id="useQuickFoodBtn" class="primary-btn">Use These Values</button>
+    </div>
+  </div>
+
+  <div class="quick-food-preview" id="quickFoodPreview">
+    <div class="macro-stat-card">
+      <span id="quickServing">Serving: —</span>
+      <strong id="quickCalories">0</strong>
+    </div>
+    <div class="macro-stat-card">
+      <span>Protein</span>
+      <strong id="quickProtein">0g</strong>
+    </div>
+    <div class="macro-stat-card">
+      <span>Carbs</span>
+      <strong id="quickCarbs">0g</strong>
+    </div>
+    <div class="macro-stat-card">
+      <span>Fats</span>
+      <strong id="quickFats">0g</strong>
+    </div>
+  </div>
+</section>
+    <section class="workout-layout">
+
+      <div class="workout-form-card glass">
+        <div class="section-title-wrap">
+          <h2>Add Meal</h2>
+          <p class="muted">Log a meal with calories and macros.</p>
+        </div>
+
+        <form id="calorieForm" class="create-form">
+          <div class="workout-form-grid calorie-form-grid">
+
+            <div class="form-group">
+              <label for="mealName">Meal Name</label>
+              <input
+                type="text"
+                id="mealName"
+                class="form-input"
+                placeholder="e.g. Oats with banana"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="mealType">Meal Type</label>
+              <select id="mealType" class="form-input" required>
+                <option value="" disabled selected>Select type</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Snack">Snack</option>
+                <option value="Post Workout">Post Workout</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="mealCalories">Calories</label>
+              <input
+                type="number"
+                id="mealCalories"
+                class="form-input"
+                placeholder="e.g. 420"
+                min="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="mealProtein">Protein (g)</label>
+              <input
+                type="number"
+                id="mealProtein"
+                class="form-input"
+                placeholder="e.g. 25"
+                min="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="mealCarbs">Carbs (g)</label>
+              <input
+                type="number"
+                id="mealCarbs"
+                class="form-input"
+                placeholder="e.g. 48"
+                min="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="mealFats">Fats (g)</label>
+              <input
+                type="number"
+                id="mealFats"
+                class="form-input"
+                placeholder="e.g. 12"
+                min="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="dailyCalorieTarget">Daily Calorie Target</label>
+              <input
+                type="number"
+                id="dailyCalorieTarget"
+                class="form-input"
+                placeholder="e.g. 2000"
+                min="500"
+                required
+              />
+            </div>
+
+          </div>
+
+          <button type="submit" class="primary-btn">Add Meal</button>
+          <p id="calorieMessage" class="auth-message"></p>
+        </form>
+      </div>
+
+      <div class="workout-result-card glass">
+        <div class="section-title-wrap">
+          <h2>Meal Log</h2>
+          <p class="muted">Your meals for the selected date.</p>
+        </div>
+
+        <div id="mealLogList" class="meal-log-list"></div>
+
+        <div id="mealLogEmpty" class="workout-output-empty">
+          <h3>No meals added yet</h3>
+          <p>Add your first meal to start tracking calories.</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+<p>© 2026 NextRep. All rights reserved.</p>
+</html>

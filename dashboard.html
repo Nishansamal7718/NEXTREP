@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NextRep | Smart Habit & Fitness Tracker</title>  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="dashboard">
+  <header class="navbar glass-nav">
+    <div class="nav-left">
+      <h1 class="brand">NextRep</h1>
+    </div>
+
+    <nav class="nav-links">
+      <a href="dashboard.html" class="nav-btn active">Dashboard</a>
+      <a href="profile.html" class="nav-btn">Profile</a>
+      <a href="habits.html" class="nav-btn">Habits</a>
+      <a href="create.html" class="nav-btn">Create Habit</a>
+      <a href="fitness.html" class="nav-btn mode-switch-btn">Fitness Mode</a>
+      <button id="themeToggle" class="theme-btn" type="button">🌙 Theme</button>
+      <button class="logout-btn" type="button" onclick="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <main class="dashboard-page">
+    <section class="dashboard-wrapper">
+      <section class="welcome-user-card glass">
+  <div>
+    <p class="welcome-label">Welcome back</p>
+    <h2 id="dashboardWelcomeName">User</h2>
+    <p class="muted">Keep going — your habits are shaping your future.</p>
+  </div>
+</section>
+<section class="fitness-entry-card glass">
+  <div class="fitness-entry-content">
+    <div class="fitness-entry-text">
+      <span class="fitness-entry-chip">Fitness Mode</span>
+      <h2>Explore Fitness Mode</h2>
+      <p>Generate workouts, track calories, get nutrition plans and recovery support.</p>
+    </div>
+
+    <a href="fitness.html" class="fitness-entry-btn">🚀 Enter Fitness Mode</a>
+  </div>
+</section>
+      <div class="dashboard-top">
+        <div class="chart-card glass">
+          <div class="card-header">
+            <h2>Habit Progress Overview</h2>
+            <p class="muted">Live overview based on your saved habits.</p>
+          </div>
+
+          <div class="chart-legend">
+            <span><i class="legend-dot done-dot"></i> Done %</span>
+            <span><i class="legend-dot miss-dot"></i> Miss %</span>
+          </div>
+
+          <div class="fake-chart" id="dashboardChart">
+            <div class="chart-side-labels">
+              <div class="top-labels">
+                <span>100%</span>
+                <span>75%</span>
+                <span>50%</span>
+                <span>25%</span>
+              </div>
+
+              <div class="baseline-label">0%</div>
+
+              <div class="bottom-labels">
+                <span>-25%</span>
+                <span>-50%</span>
+                <span>-75%</span>
+                <span>-100%</span>
+              </div>
+            </div>
+
+            <div class="chart-plot">
+              <div class="chart-middle-line"></div>
+              <div class="chart-grid-lines"></div>
+              <div class="chart-grid" id="chartGrid"></div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="performance-card glass">
+          <h2>Your performance</h2>
+
+          <div class="section-box">
+            <h3>Selected date</h3>
+            <input id="selectedDate" class="date-input" type="date" />
+            <p class="muted" id="selectedDateText">
+              Choose a date to view your daily and weekly tracking progress.
+            </p>
+          </div>
+
+          <div class="progress-rings">
+            <div class="ring-box">
+              <div class="ring ring-blue" id="todayRing" style="--percent:0;">
+                <div class="ring-inner">
+                  <strong id="todayPercent">0%</strong>
+                  <span>Today</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ring-box">
+              <div class="ring ring-cyan" id="weekRing" style="--percent:0;">
+                <div class="ring-inner">
+                  <strong id="weekPercent">0%</strong>
+                  <span>This week</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ring-box">
+              <div class="ring ring-gray" id="missRing" style="--percent:0;">
+                <div class="ring-inner">
+                  <strong id="missPercent">0%</strong>
+                  <span>Missed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="overall-box">
+            <p>Overall performance: <strong id="overallPerformance">0%</strong></p>
+          </div>
+        </aside>
+      </div>
+
+      <div class="stats-row">
+        <div class="stats-card glass">
+          <h4>Total Habits</h4>
+          <p id="totalHabitsCount">0</p>
+        </div>
+
+        <div class="stats-card glass">
+          <h4>Completed Today</h4>
+          <p id="completedTodayCount">0</p>
+        </div>
+
+        <div class="stats-card glass">
+          <h4>Missed Today</h4>
+          <p id="missedTodayCount">0</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+<p>© 2026 NextRep. All rights reserved.</p>
+</html>

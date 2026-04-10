@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NextRep | Smart Habit & Fitness Tracker</title>  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="habits">
+  <header class="navbar glass-nav">
+    <div class="nav-left">
+      <h1 class="brand">NextRep</h1>
+    </div>
+
+    <nav class="nav-links">
+      <a href="dashboard.html" class="nav-btn">Dashboard</a>
+      <a href="profile.html" class="nav-btn">Profile</a>
+      <a href="habits.html" class="nav-btn active">Habits</a>
+      <a href="create.html" class="nav-btn">Create Habit</a>
+      <a href="fitness.html" class="nav-btn mode-switch-btn">Fitness Mode</a>
+      <button id="themeToggle" class="theme-btn" type="button">🌙 Theme</button>
+      <button class="logout-btn" type="button" onclick="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-header glass">
+      <div>
+        <h2>Your Habits</h2>
+        <p class="muted">Track, update, and manage your daily habits.</p>
+      </div>
+      <a href="create.html" class="primary-link-btn">+ Add Habit</a>
+    </section>
+
+    <section id="habitsList" class="habits-grid"></section>
+
+    <section id="emptyState" class="empty-state glass" style="display: none;">
+      <h3>No habits yet</h3>
+      <p class="muted">Create your first habit to start tracking.</p>
+      <a href="create.html" class="primary-link-btn">Create Habit</a>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+<p>© 2026 NextRep. All rights reserved.</p>
+</html>

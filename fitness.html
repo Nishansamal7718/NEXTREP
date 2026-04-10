@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NextRep | Smart Habit & Fitness Tracker</title>  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-page="fitness">
+
+<!-- NAVBAR -->
+<header class="navbar glass-nav">
+  <div class="nav-left">
+    <h1 class="brand">Fitness Mode</h1>
+  </div>
+
+  <nav class="nav-links">
+    <a href="dashboard.html" class="nav-btn">Habit Tracker</a>
+    <button id="themeToggle" class="theme-btn">🌙 Theme</button>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </nav>
+</header>
+
+<main class="page-shell">
+
+  <!-- HERO SECTION -->
+  <section class="fitness-hero glass">
+    <div>
+      <span class="fitness-chip">Premium Mode</span>
+      <h2>Train Smarter. Live Better.</h2>
+      <p class="muted">
+        Your complete fitness system — workouts, nutrition, calories, and recovery — all in one place.
+      </p>
+    </div>
+  </section>
+
+  <!-- MAIN CARDS -->
+ <section class="fitness-grid">
+
+  <div class="fitness-card glass">
+    <div class="fitness-card-top">
+      <div class="fitness-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 8 4 10l4 4 2-2"></path>
+          <path d="m18 8 2 2-4 4-2-2"></path>
+          <path d="M10 14 14 10"></path>
+          <path d="M9 6 6 9"></path>
+          <path d="m15 18 3-3"></path>
+        </svg>
+      </div>
+      <span class="fitness-chip">Workout</span>
+    </div>
+    <h3>Workout Generator</h3>
+    <p class="muted">
+      Build a personalized training plan based on your goal, level, and schedule.
+    </p>
+    <a href="workout.html" class="primary-link-btn">Start Training</a>
+  </div>
+
+  <div class="fitness-card glass">
+    <div class="fitness-card-top">
+      <div class="fitness-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2s-4 5-4 8.5A4 4 0 0 0 12 15a4 4 0 0 0 4-4.5C16 7 12 2 12 2Z"></path>
+          <path d="M8.5 15.5A4.5 4.5 0 0 0 13 20a4.5 4.5 0 0 0 4.5-4.5"></path>
+        </svg>
+      </div>
+      <span class="fitness-chip">Calories</span>
+    </div>
+    <h3>Calorie Tracker</h3>
+    <p class="muted">
+      Track daily calories, monitor macros, and stay aligned with your target.
+    </p>
+    <a href="calories.html" class="primary-link-btn">Track Now</a>
+  </div>
+
+  <div class="fitness-card glass">
+    <div class="fitness-card-top">
+      <div class="fitness-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 21c5.5 0 10-4.5 10-10V3"></path>
+          <path d="M17 8c-1.5 0-3-.5-4-1.5S11.5 4 10 4C7.8 4 6 5.8 6 8c0 1.5.5 3 1.5 4S9 14.5 9 16c0 2.8-2.2 5-5 5"></path>
+        </svg>
+      </div>
+      <span class="fitness-chip">Nutrition</span>
+    </div>
+    <h3>Nutrition Support</h3>
+    <p class="muted">
+      Get smart meal suggestions and diet support for bulking, cutting, or recomposition.
+    </p>
+    <a href="nutrition.html" class="primary-link-btn">Explore Diet</a>
+  </div>
+
+  <div class="fitness-card glass">
+    <div class="fitness-card-top">
+      <div class="fitness-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 3 6 7"></path>
+          <path d="m14 21 4-4"></path>
+          <path d="m3 10 7-7 11 11-7 7L3 10Z"></path>
+          <path d="M7.5 7.5 16.5 16.5"></path>
+        </svg>
+      </div>
+      <span class="fitness-chip">Recovery</span>
+    </div>
+    <h3>Injury Recovery</h3>
+    <p class="muted">
+      Find safer exercise options, recovery advice, and mobility guidance.
+    </p>
+    <a href="recovery.html" class="primary-link-btn">Recover Smart</a>
+  </div>
+
+</section>
+
+  <!-- EXTRA SECTION (OPTIONAL PREMIUM FEEL) -->
+  <section class="fitness-hero glass" style="margin-top:20px;">
+    <div>
+      <h2>Consistency Beats Motivation</h2>
+      <p class="muted">
+        Combine your habit tracking with fitness discipline to build unstoppable routines.
+      </p>
+      <a href="dashboard.html" class="primary-link-btn">Back to Habits</a>
+    </div>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+<p>© 2026 NextRep. All rights reserved.</p>
+</html>

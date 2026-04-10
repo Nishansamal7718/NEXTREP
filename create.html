@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NextRep | Smart Habit & Fitness Tracker</title>  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="create">
+  <header class="navbar glass-nav">
+    <div class="nav-left">
+      <h1 class="brand">NextRep</h1>
+    </div>
+
+    <nav class="nav-links">
+      <a href="dashboard.html" class="nav-btn">Dashboard</a>
+      <a href="profile.html" class="nav-btn">Profile</a>
+      <a href="habits.html" class="nav-btn">Habits</a>
+      <a href="create.html" class="nav-btn active">Create Habit</a>
+      <button id="themeToggle" class="theme-btn" type="button">🌙 Theme</button>
+      <button class="logout-btn" type="button" onclick="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="create-layout">
+      <div class="create-card glass">
+        <div class="section-title-wrap">
+          <h2>Create New Habit</h2>
+          <p class="muted">Add a habit and choose the days you want to track.</p>
+        </div>
+
+        <form id="createHabitForm" class="create-form">
+          <div class="form-group">
+            <label for="habitName">Habit Name</label>
+            <input
+              type="text"
+              id="habitName"
+              class="form-input"
+              placeholder="e.g. Drink Water"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="habitCategory">Category</label>
+            <select id="habitCategory" class="form-input" required>
+             <option value="" disabled selected>Select category</option>
+              <option value="Health">Health</option>
+              <option value="Fitness">Fitness</option>
+              <option value="Study">Study</option>
+              <option value="Work">Work</option>
+              <option value="Mindset">Mindset</option>
+              <option value="Personal">Personal</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="habitGoal">Daily Goal</label>
+            <input
+              type="text"
+              id="habitGoal"
+              class="form-input"
+              placeholder="e.g. 3 liters / 30 mins / 20 pages"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Active Days</label>
+            <div class="days-grid">
+              <label class="day-pill"><input type="checkbox" value="Mon" checked><span>Mon</span></label>
+              <label class="day-pill"><input type="checkbox" value="Tue" checked><span>Tue</span></label>
+              <label class="day-pill"><input type="checkbox" value="Wed" checked><span>Wed</span></label>
+              <label class="day-pill"><input type="checkbox" value="Thu" checked><span>Thu</span></label>
+              <label class="day-pill"><input type="checkbox" value="Fri" checked><span>Fri</span></label>
+              <label class="day-pill"><input type="checkbox" value="Sat"><span>Sat</span></label>
+              <label class="day-pill"><input type="checkbox" value="Sun"><span>Sun</span></label>
+            </div>
+          </div>
+
+          <button type="submit" class="primary-btn">Save Habit</button>
+          <p id="createMessage" class="auth-message"></p>
+        </form>
+      </div>
+
+      <div class="preview-card glass">
+        <div class="section-title-wrap">
+          <h2>Preview</h2>
+          <p class="muted">Live preview of your habit card.</p>
+        </div>
+
+        <div class="habit-preview-card">
+          <div class="habit-preview-top">
+            <div>
+              <h3 id="previewHabitName">Drink Water</h3>
+              <p id="previewHabitCategory">Health</p>
+            </div>
+            <span class="habit-status-badge">Pending</span>
+          </div>
+
+          <div class="habit-meta">
+            <div class="meta-box">
+              <span>Goal</span>
+              <strong id="previewHabitGoal">3 liters</strong>
+            </div>
+            <div class="meta-box">
+              <span>Days</span>
+              <strong id="previewHabitDays">Mon, Tue, Wed, Thu, Fri</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+<p>© 2026 NextRep. All rights reserved.</p>
+</html>

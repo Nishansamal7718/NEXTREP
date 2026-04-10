@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NextRep | Smart Habit & Fitness Tracker</title>  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="nutrition">
+
+  <header class="navbar glass-nav">
+    <div class="nav-left">
+      <h1 class="brand">NextRep</h1>
+    </div>
+
+    <nav class="nav-links">
+      <a href="fitness.html" class="nav-btn">Fitness Home</a>
+      <a href="workout.html" class="nav-btn">Workout</a>
+      <a href="calories.html" class="nav-btn">Calories</a>
+      <a href="nutrition.html" class="nav-btn active">Nutrition</a>
+      <a href="recovery.html" class="nav-btn">Recovery</a>
+      <a href="dashboard.html" class="nav-btn">Return to Habit Tracker</a>
+      <button id="themeToggle" class="theme-btn" type="button">🌙 Theme</button>
+      <button class="logout-btn" type="button" onclick="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+
+    <section class="fitness-hero glass">
+      <div class="fitness-hero-grid">
+        <div class="hero-main">
+          <span class="fitness-chip">Fuel Your Progress</span>
+          <h2>Nutrition planning with meal guidance and supplements support</h2>
+          <p class="muted">
+            Choose your goal and diet type to view macro guidance, meal suggestions,
+            and a practical supplements guide.
+          </p>
+
+          <div class="hero-feature-row">
+            <div class="hero-feature-card">
+              <strong>Meal Guidance</strong>
+              <span>Simple breakfast, lunch, dinner and snack ideas</span>
+            </div>
+            <div class="hero-feature-card">
+              <strong>Macro Support</strong>
+              <span>Protein, carbs, fats and hydration recommendations</span>
+            </div>
+            <div class="hero-feature-card">
+              <strong>Supplements</strong>
+              <span>Safe, beginner-friendly supplement overview</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="focus-panel">
+          <div class="focus-top">
+            <h3>Nutrition Focus</h3>
+            <span class="focus-badge">Diet Mode</span>
+          </div>
+
+          <div class="focus-meter-labels">
+            <span>Plan Quality</span>
+            <span>Balanced</span>
+          </div>
+
+          <div class="focus-meter">
+            <div class="focus-meter-fill" style="width: 82%;"></div>
+          </div>
+
+          <div class="focus-tags">
+            <div class="focus-tag">Protein</div>
+            <div class="focus-tag">Carbs</div>
+            <div class="focus-tag">Fats</div>
+            <div class="focus-tag">Hydration</div>
+            <div class="focus-tag">Meals</div>
+            <div class="focus-tag">Recovery</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nutrition-top-grid">
+      <div class="workout-form-card glass">
+        <div class="section-title-wrap">
+          <h2>Nutrition Planner</h2>
+          <p class="muted">Select your goal and diet style to generate recommendations.</p>
+        </div>
+
+        <div class="nutrition-planner-grid">
+          <div class="form-group">
+            <label for="nutritionGoal">Fitness Goal</label>
+            <select id="nutritionGoal" class="form-input">
+              <option value="fat_loss">Fat Loss</option>
+              <option value="muscle_gain">Muscle Gain</option>
+              <option value="body_recomp">Body Recomposition</option>
+              <option value="maintain">Maintain</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="dietType">Diet Type</label>
+            <select id="dietType" class="form-input">
+              <option value="vegetarian">Vegetarian</option>
+              <option value="vegan">Vegan</option>
+              <option value="non_vegetarian">Non-Vegetarian</option>
+            </select>
+          </div>
+
+          <div class="form-group planner-btn">
+            <label>&nbsp;</label>
+          <button type="button" class="primary-btn" id="generateNutritionPlanBtn">Generate Nutrition Plan</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="workout-calendar-card glass">
+        <h3>Macro Summary</h3>
+        <p>Recommended daily macro approach for your selected goal.</p>
+
+        <div class="macro-summary-grid">
+          <div class="macro-stat-card">
+            <span>Protein</span>
+            <strong id="nutritionProtein">—</strong>
+          </div>
+          <div class="macro-stat-card">
+            <span>Carbs</span>
+            <strong id="nutritionCarbs">—</strong>
+          </div>
+          <div class="macro-stat-card">
+            <span>Fats</span>
+            <strong id="nutritionFats">—</strong>
+          </div>
+          <div class="macro-stat-card">
+            <span>Water</span>
+            <strong id="nutritionWater">—</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="workout-result-card glass">
+      <div class="section-title-wrap">
+        <h2>Nutrition Guidance</h2>
+        <p class="muted">Goal-based nutrition strategy and key reminders.</p>
+      </div>
+
+      <div class="nutrition-guidance-grid">
+        <div class="nutrition-info-card">
+          <h4>Calorie Strategy</h4>
+          <p id="nutritionCalorieStrategy">—</p>
+        </div>
+        <div class="nutrition-info-card">
+          <h4>Protein Focus</h4>
+          <p id="nutritionProteinStrategy">—</p>
+        </div>
+        <div class="nutrition-info-card">
+          <h4>Carb Strategy</h4>
+          <p id="nutritionCarbStrategy">—</p>
+        </div>
+        <div class="nutrition-info-card">
+          <h4>Fat Strategy</h4>
+          <p id="nutritionFatStrategy">—</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="workout-result-card glass">
+      <div class="section-title-wrap">
+        <h2>Sample Meal Suggestions</h2>
+        <p class="muted">Simple ideas based on your selected diet style.</p>
+      </div>
+
+      <div class="meal-suggestions-grid" id="mealSuggestionsGrid"></div>
+    </section>
+
+    <section class="workout-result-card glass">
+      <div class="section-title-wrap">
+        <h2>Supplements Guide</h2>
+        <p class="muted">Food comes first. Supplements are optional support tools.</p>
+      </div>
+
+      <div class="supplement-grid" id="supplementGrid"></div>
+    </section>
+
+    <section class="workout-result-card glass">
+      <div class="section-title-wrap">
+        <h2>Important Note</h2>
+      </div>
+
+      <div class="nutrition-note-box">
+        Supplements are optional, not mandatory. Prioritize whole foods, adequate protein,
+        hydration, sleep, and consistent training. If you have a medical condition or are unsure
+        about a supplement, consult a qualified professional before use.
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+<p>© 2026 NextRep. All rights reserved.</p>
+</html>
